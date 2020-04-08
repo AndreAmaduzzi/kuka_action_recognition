@@ -71,7 +71,7 @@ This algorithm provides the 3D keypoints of the main human body parts.
 On the basis of all the information obtain before, the algorithm can identify the fundamental spatial relations among the objects in the scene.
 The solution relies on 3D data coming from the human pose estimation task and the 3D bounding boxes of the objects.
 For each frame, the relative positions of the objects are evaluated from a geometric point of view, in order to extract relations among each pair of elements.
-This solution is based on the paper “Semantic analysis of manipulation actions using spatial relations” 
+This solution is based on the paper F. Ziaeetabar, E. E. Aksoy, F. Wörgötter and M. Tamosiunaite, "Semantic analysis of manipulation actions using spatial relations," 2017 IEEE International Conference on Robotics and Automation (ICRA), Singapore, 2017, pp. 4612-4619.
 
 ## Human Action Recognition
 At this point, once the spatial relations have been computed, the system can classify the action which is being performed in front of the camera, thanks to a sort of state machine implementation.
