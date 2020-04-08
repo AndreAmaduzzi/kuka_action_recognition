@@ -55,11 +55,12 @@ The picture below summarizes the statement of the problem which is tackled at th
 The point cloud is estimated thanks to the depth information from the camera and the output of Mask-RCNN, by applying some functions belonging to the library [Open3D](https://github.com/intel-isl/Open3D).
 This unit updates the fields of the main ROS message, by including the coordinates of the 3D points being part of each point cloud.
 
-##3D Bounding Box Estimation
+## 3D Bounding Box Estimation
 This step is in charge of the estimation of a 3D bounding box around each point cloud.
 Specifically, the algorithm estimates oriented bounding boxes, by using the library [PCL](https://github.com/PointCloudLibrary/pcl).
 The picture below shows an example of the obtained result.
 ![](images/obb.png)
+
 
 ## 3D Human body detection
 A technology for 3D human pose estimation was integrated with the overall project.
