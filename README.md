@@ -83,14 +83,3 @@ The state machine was manually coded, in order to provide the recognition of the
 3. Repairing a camera with a screwdriver / drill / tape;
 4. Working with the computer;
 5. Texting with the phone.
-
-The video below shows an example of the system, running.
-From left to right:
-3D human pose estimation, instance segmentation through Mask-RCNN, 3D point clouds estimation, output of the algorithm (Rgb image of the scene with the label of the current state)
-
-
-
-
-
-
-
