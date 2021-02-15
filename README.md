@@ -1,5 +1,8 @@
 # Deep Learning – based Human Actions Recognition in a Collaborative Robotics Environment
 ROS project for the recognition of human actions, from RGBD input
+
+**TO SEE A DEMO, SKIPE HERE: [Demo](#demonstration)**
+
 ## Overview
 This ROS project allows to recognize some human actions performed in a manufacturing environment, from RGB-D input data.
 The following image illustrates the pipeline of the project:
@@ -69,14 +72,13 @@ This algorithm provides the 3D keypoints of the main human body parts.
 ![](images/human_example.png)
 
 ## Analysis of the spatial relations among the objects
-On the basis of all the information obtain before, the algorithm can identify the fundamental spatial relations among the objects in the scene.
+On the basis of all the information obtained before, the algorithm can identify the fundamental spatial relations among the objects in the scene.
 The solution relies on 3D data coming from the human pose estimation task and the 3D bounding boxes of the objects.
 For each frame, the relative positions of the objects are evaluated from a geometric point of view, in order to extract relations among each pair of elements.
 This solution is based on the paper F. Ziaeetabar, E. E. Aksoy, F. Wörgötter and M. Tamosiunaite, "Semantic analysis of manipulation actions using spatial relations," 2017 IEEE International Conference on Robotics and Automation (ICRA), Singapore, 2017, pp. 4612-4619.
 
 ## Human Action Recognition
-At this point, once the spatial relations have been computed, the system can classify the action which is being performed in front of the camera, thanks to a sort of state machine implementation.
-Within such a state machine, the final state represents the label of the action.
+At this point, once the spatial relations have been computed, the system can classify the action which is being performed in front of the camera, thanks to a machine state - based solution. Within such a state machine, the final state represents the label of the action.
 
 The state machine was manually coded, in order to provide the recognition of the following activities:
 1. Placing an object inside a box;
@@ -84,3 +86,29 @@ The state machine was manually coded, in order to provide the recognition of the
 3. Repairing a camera with a screwdriver / drill / tape;
 4. Working with the computer;
 5. Texting with the phone.
+
+Each activity is characterized by a sequence of states. The transitions between two states is dictated by several situations, such as specific spatial relations among objects (e.g. phone behind keyboard), the user holding an object (e.g. user holding a drill) or the presence of a particular object (e.g. box present in the scene).
+The following graph shows the state machine which has been used to detect the action "placing an object inside a box" and "repairing a box".
+![](images/state_machine.PNG)
+
+The images below show some steps of the execution of an action.  
+**Placing a mouse inside a box**  
+![](images/scheme_1.JPG)
+
+## Results
+Overall, the project lead to the following results:
+1. The accuracy of the method is in line with state-of-the-art research papers;
+2. The accuracy and robustness of the algorithm is strongly affected by the accuracy of the object detection.
+
+## Novelty of the project
+This method is characterized by the following novel aspects:
+1. Focus on human activities in an industrial context;
+2. 3D-based activity recognition, leading to a more robust analysis of the geometric relations;
+3. Integration of a 3D human body detection with object segmentation.
+
+
+## Demonstration
+Here, you can see a video showing the system running:
+![](images/final_action_1.gif)
+
+From left to right: 3D human body tracking, Instance Segmentation with Mask-RCNN, Point Clouds of the objects, frame with the label of the current state
